@@ -16,6 +16,7 @@
 		2366715522C073620084AA37 /* youtubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2366715422C073620084AA37 /* youtubeUITests.swift */; };
 		2393E1FA22CB466E00084CD7 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393E1F922CB466E00084CD7 /* Extention.swift */; };
 		2393E1FD22CB46D600084CD7 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393E1FC22CB46D600084CD7 /* VideoCell.swift */; };
+		2393E20022CB497500084CD7 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2393E1FF22CB497500084CD7 /* MenuBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		2366715622C073620084AA37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2393E1F922CB466E00084CD7 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		2393E1FC22CB46D600084CD7 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		2393E1FF22CB497500084CD7 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				2393E1FC22CB46D600084CD7 /* VideoCell.swift */,
+				2393E1FF22CB497500084CD7 /* MenuBar.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				2393E1FD22CB46D600084CD7 /* VideoCell.swift in Sources */,
 				2393E1FA22CB466E00084CD7 /* Extention.swift in Sources */,
 				2366713522C073600084AA37 /* AppDelegate.swift in Sources */,
+				2393E20022CB497500084CD7 /* MenuBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
