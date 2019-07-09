@@ -10,36 +10,43 @@ import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.title = "Home"
-        navigationController?.navigationBar.isTranslucent = false
-        
-        
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = "Home"
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 20)
-        navigationItem.titleView = titleLabel
-        
-        collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        
-        registerCell()
-        setupMenuBar()
-    }
     
     let menuBar: MenuBar = {
         let mb = MenuBar()
         return mb
     }()
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupMenuBar()
+        setupTitle()
+        setupCollectionView()
+        registerCell()
+    }
+    
+    func setupTitle() {
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = "Home"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        navigationItem.titleView = titleLabel
+    }
+    
+    func setupCollectionView() {
+        collectionView.backgroundColor = .white
+        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+    }
+    
     private func setupMenuBar() {
         view.addSubview(menuBar)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
         view.addConstraintsWithFormat(format: "V:|[v0(50)]|", views: menuBar)
+        
     }
     
     func registerCell() {
@@ -64,6 +71,5 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
 
 }
