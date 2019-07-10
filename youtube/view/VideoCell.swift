@@ -59,8 +59,8 @@ class VideoCell : BaseCell {
     
     
     
-    let thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
+    let thumbnailImageView: CustomUIImageView = {
+        let imageView = CustomUIImageView()
         imageView.image = UIImage(named: "blankspace")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -74,8 +74,8 @@ class VideoCell : BaseCell {
         return view
     }()
     
-    let userProfileImageView : UIImageView = {
-        let imageView = UIImageView()
+    let userProfileImageView : CustomUIImageView = {
+        let imageView = CustomUIImageView()
         imageView.image = UIImage(named: "taylor-swift-profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true

@@ -31,22 +31,44 @@ extension UIView {
     }
 }
 
-extension UIImageView {
+let imageCache = NSCache<AnyObject, AnyObject>()
+
+class CustomUIImageView : UIImageView {
+    
+    var imageUrlString: String?
+    
     func loadImageUsingUrlString(urlString: String) {
+        
+        imageUrlString = urlString
+        
         let url = URL(string: urlString)
         let request = URLRequest(url: url!)
         
+        image = nil
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if error != nil {
-                print(error as Any)
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
-        }.resume()
+        if let imageFromCatche = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.image = imageFromCatche
+            return
+        } else {
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    let imageToCache = UIImage(data: data!)
+                    
+                    if self.imageUrlString == urlString {
+                        self.image = UIImage(data: data!)
+                    }
+                    
+                    imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                    
+                }
+            }.resume()
+        }
+        
     }
 }
 
