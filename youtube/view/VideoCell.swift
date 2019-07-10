@@ -46,6 +46,19 @@ class VideoCell : BaseCell {
                 let subtitleText = "\(channelName) * \(number!) views * 2 years ago"
                 subTitleTextView.text = subtitleText
             }
+            
+            // measure title tex
+            if let title = video?.title {
+                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
+                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
+                
+                if estimatedRect.height > 20 {
+                    titleLabelhightContranst?.constant = 44
+                } else {
+                    titleLabelhightContranst?.constant = 20
+                }
+            }
         }
     }
     
@@ -77,6 +90,7 @@ class VideoCell : BaseCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Taylor Swift - Blank Space"
+        label.numberOfLines = 2
         return label
     }()
     
@@ -88,6 +102,8 @@ class VideoCell : BaseCell {
         textView.textColor = .lightGray
         return textView
     }()
+    
+    var titleLabelhightContranst : NSLayoutConstraint?
     
     override func setupViews() {
         
@@ -103,16 +119,18 @@ class VideoCell : BaseCell {
         addConstraintsWithFormat(format:  "H:|[v0]|", views: separatorView)
         
         // vertical constraints
-        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
+        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-36-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
         
         // top constaint
         addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: 8)])
         //left constraint
         addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8)])
-        //left constraint
+        //right constraint
         addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: 0)])
-        //left constraint
-        addConstraints([NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20)])
+        //height constraint
+        titleLabelhightContranst = NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44)
+        addConstraints([titleLabelhightContranst!])
+        
         
         // top constaint
         addConstraints([NSLayoutConstraint(item: subTitleTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4)])
