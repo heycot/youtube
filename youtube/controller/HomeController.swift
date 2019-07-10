@@ -16,6 +16,25 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return mb
     }()
     
+    var videos: [Video] = {
+        var taylorChannel = Channel()
+        taylorChannel.name = "Taylor Swift VEVO"
+        taylorChannel.profileImageName =  "taylor-swift-profile"
+        
+        var blankSpaceVideo = Video()
+        blankSpaceVideo.title = "Taylor Swift - Blank Space"
+        blankSpaceVideo.thumbnailImageName = "blankspace"
+        blankSpaceVideo.channel = taylorChannel
+        blankSpaceVideo.numberOfViews = 1282459829732
+        
+        var badBloodVideo = Video()
+        badBloodVideo.title = "Taylor Swift - bad Blood featuring Kendrick Lama"
+        badBloodVideo.thumbnailImageName = "badblood"
+        badBloodVideo.channel = taylorChannel
+        badBloodVideo.numberOfViews = 373648992
+        
+        return [blankSpaceVideo, badBloodVideo]
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +42,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setupTitle()
         setupCollectionView()
         registerCell()
+        setupNavBarButtons()
     }
     
     func setupTitle() {
@@ -53,12 +73,33 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "CellID") 
     }
     
+    func setupNavBarButtons() {
+        
+        let searchImage = UIImage(named: "search-icon")?.withRenderingMode(.alwaysTemplate)
+        let moreImage = UIImage(named: "show-more-button")?.withRenderingMode(.alwaysTemplate)
+        
+        
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+        searchBarButtonItem.tintColor = .white
+        
+        let moreButton = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(handleSearch))
+        moreButton.tintColor = .white
+        
+        navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
+    }
+    
+    @objc func handleSearch() {
+        
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return videos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as! VideoCell
+        
+        cell.video = videos[indexPath.item]
         
         return cell
     }

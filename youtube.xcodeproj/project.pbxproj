@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231F3ABF22D58B950007CBF7 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F3ABE22D58B950007CBF7 /* Views.swift */; };
 		2366713522C073600084AA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2366713422C073600084AA37 /* AppDelegate.swift */; };
 		2366713722C073600084AA37 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2366713622C073600084AA37 /* HomeController.swift */; };
 		2366713A22C073600084AA37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2366713822C073600084AA37 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		231F3ABE22D58B950007CBF7 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		2366713122C073600084AA37 /* youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = youtube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2366713422C073600084AA37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2366713622C073600084AA37 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		231F3ABD22D58B720007CBF7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				231F3ABE22D58B950007CBF7 /* Views.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		2366712822C073600084AA37 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		2366713322C073600084AA37 /* youtube */ = {
 			isa = PBXGroup;
 			children = (
+				231F3ABD22D58B720007CBF7 /* model */,
 				2393E1FE22CB46EC00084CD7 /* controller */,
 				2393E1FB22CB46C000084CD7 /* view */,
 				2393E1F822CB465600084CD7 /* helper */,
@@ -294,6 +305,7 @@
 			files = (
 				2366713722C073600084AA37 /* HomeController.swift in Sources */,
 				2393E1FD22CB46D600084CD7 /* VideoCell.swift in Sources */,
+				231F3ABF22D58B950007CBF7 /* Views.swift in Sources */,
 				2393E1FA22CB466E00084CD7 /* Extention.swift in Sources */,
 				2366713522C073600084AA37 /* AppDelegate.swift in Sources */,
 				2393E20022CB497500084CD7 /* MenuBar.swift in Sources */,
