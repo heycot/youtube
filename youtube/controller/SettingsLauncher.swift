@@ -23,6 +23,8 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     let cellId = "CellId"
     let cellHeight: CGFloat = 50
     
+    var homeController : HomeController?
+    
     let settings : [Setting] = {
         return [Setting(name: "Settings", imageName: "fire"),
                 Setting(name: "Terms & privacy policy", imageName: "fire"),
@@ -98,5 +100,24 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.blackView.alpha = 0
+            if let window = UIApplication.shared.keyWindow {
+                
+                self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+            }
+            
+        }) { (comleted: Bool) in
+            let setting = self.settings[indexPath.item]
+            
+            if setting.name != "Cancel" {
+                self.homeController?.showControllerForSettings(setting)
+            }
+        }
     }
 }
