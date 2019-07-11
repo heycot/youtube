@@ -153,7 +153,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         let dummySettingsViewController = UIViewController()
         dummySettingsViewController.view.backgroundColor = .white
-        dummySettingsViewController.navigationItem.title = setting.name
+        dummySettingsViewController.navigationItem.title = setting.name.rawValue
         
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

@@ -26,12 +26,12 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     var homeController : HomeController?
     
     let settings : [Setting] = {
-        return [Setting(name: "Settings", imageName: "fire"),
-                Setting(name: "Terms & privacy policy", imageName: "fire"),
-                Setting(name: "Send Feedback", imageName: "fire"),
-                Setting(name: "Help", imageName: "fire"),
-                Setting(name: "Switch Account", imageName: "fire"),
-                Setting(name: "Cancel", imageName: "fire")]
+        return [Setting(name: .Settings, imageName: "fire"),
+                Setting(name: .TermsPrivacyPolicy, imageName: "fire"),
+                Setting(name: .SendFeedback, imageName: "fire"),
+                Setting(name: .Help, imageName: "fire"),
+                Setting(name: .SwitchAccount, imageName: "fire"),
+                Setting(name: .Cancel, imageName: "fire")]
     }()
     
     @objc func showSettings() {
@@ -115,7 +115,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         }) { (comleted: Bool) in
             let setting = self.settings[indexPath.item]
             
-            if setting.name != "Cancel" {
+            if setting.name != .Cancel {
                 self.homeController?.showControllerForSettings(setting)
             }
         }
