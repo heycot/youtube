@@ -128,7 +128,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         searchBarButtonItem.tintColor = .white
         
-        let moreButton = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(handleSearch))
+        let moreButton = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(handleMore))
         moreButton.tintColor = .white
         
         navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
@@ -137,6 +137,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     @objc func handleSearch() {
         
     }
+    
+    let settingLauncher = SettingsLauncher()
+    
+    @objc func handleMore() {
+        settingLauncher.showSettings()
+    }
+    
+  
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
